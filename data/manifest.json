@@ -1,5 +1,18 @@
 [
  {
+  "id": "bangbangyouredead_v2corrected",
+  "path": "data/movies/camcan/bangbangyouredead_v2corrected.mov",
+  "source": "camcan",
+  "modality": "audiovisual",
+  "duration_sec": 478.84,
+  "fps": 25.0,
+  "width": 768,
+  "height": 576,
+  "has_video": true,
+  "has_audio": true,
+  "rights": "Cam-CAN (credentialed; not redistributable)"
+ },
+ {
   "id": "7T_MOVIE1_CC1",
   "path": "data/movies/hcp/Pre_20140821_version/7T_MOVIE1_CC1.mp4",
   "source": "hcp",

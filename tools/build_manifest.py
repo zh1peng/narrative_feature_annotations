@@ -23,6 +23,7 @@ from nfe.ingest import TEXT_EXT, make_stimulus  # noqa: E402
 RIGHTS = {"open": "CC-BY (Blender open movies)", "spacetop": "lab-internal",
           "stories": "lab-internal", "narratives": "OpenNeuro ds002345 (CC0)",
           "hcp": "HCP (credentialed; not redistributable)", "imensa": "lab-internal",
+          "camcan": "Cam-CAN (credentialed; not redistributable)",
           "kungfury": "third-party (research use)"}
 
 # Path fragments to skip. For HCP we annotate only the Pre_20140821_version clips

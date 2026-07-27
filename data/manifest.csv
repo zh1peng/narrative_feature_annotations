@@ -1,4 +1,5 @@
 id,path,source,modality,duration_sec,fps,width,height,has_video,has_audio,rights
+bangbangyouredead_v2corrected,data/movies/camcan/bangbangyouredead_v2corrected.mov,camcan,audiovisual,478.84,25.0,768,576,True,True,Cam-CAN (credentialed; not redistributable)
 7T_MOVIE1_CC1,data/movies/hcp/Pre_20140821_version/7T_MOVIE1_CC1.mp4,hcp,audiovisual,921.0,24.0,1024,720,True,True,HCP (credentialed; not redistributable)
 7T_MOVIE2_HO1,data/movies/hcp/Pre_20140821_version/7T_MOVIE2_HO1.mp4,hcp,audiovisual,918.04,24.0,1024,720,True,True,HCP (credentialed; not redistributable)
 7T_MOVIE3_CC2,data/movies/hcp/Pre_20140821_version/7T_MOVIE3_CC2.mp4,hcp,audiovisual,915.21,24.0,1024,720,True,True,HCP (credentialed; not redistributable)
