@@ -9,9 +9,9 @@ constant-shape annotation file per stimulus for the Phase 4 analysis.
 **`data/manifest.csv`** (+ `.json`): `id, path, source, modality, duration_sec, fps,
 width, height, has_video, has_audio, rights`. Rebuild any time media is added.
 
-Current corpus: **105 stimuli / ~588.9 min (~7.8 h)** — 49 lab `spacetop` clips + 4 short films
+Current corpus: **106 stimuli / ~596.8 min (~7.8 h)** — 49 lab `spacetop` clips + 4 short films
 (3 CC-BY Blender open films + *Kung Fury*) + **29 Narratives spoken-story audio clips**
-(`data/stories/narratives/`, ~5.3 h) + 1 pure-text sample story (75 audiovisual, 29 audio-only,
+(`data/stories/narratives/`, ~5.3 h) + 1 pure-text sample story (76 audiovisual, 29 audio-only,
 1 text-only). To grow it:
 drop files under `data/movies/<source>/` (movies/audio) or `data/stories/<source>/`
 (audio/text stories) and re-run the manifest (see [`../ADDING_MOVIES.md`](../ADDING_MOVIES.md);

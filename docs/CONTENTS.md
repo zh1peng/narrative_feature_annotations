@@ -16,7 +16,7 @@ For a hands-on tour run [`docs/walkthrough.m`](walkthrough.m) in MATLAB.
 |-------|------|-------|
 | 1 Scoping review | best-in-class tools per feature class | ✅ `docs/scoping_review/` |
 | 2 Pipeline | 24 extractors → constant-shape annotations + MATLAB reader | ✅ `src/nfe/`, `matlab/` |
-| 3 Corpus | manifest + batch runner; **105 stimuli annotated** (75 audiovisual + 29 audio stories + 1 text) | ✅ `annotations/corpus/` |
+| 3 Corpus | manifest + batch runner; **106 stimuli annotated** (76 audiovisual + 29 audio stories + 1 text) | ✅ `annotations/corpus/` |
 | 4 Analysis | corpus reader, viewer, correlation/PCA/network, design tool, web search, draft paper | ✅ `matlab/`, `analysis/web/`, [`REVIEW_PAPER.md`](REVIEW_PAPER.md) |
 
 ---
@@ -27,7 +27,7 @@ For a hands-on tour run [`docs/walkthrough.m`](walkthrough.m) in MATLAB.
 README.md                  project overview + quickstart
 requirements.txt           Python deps (pipeline)
 data/
-  manifest.csv / .json     stimulus catalog (105 stimuli) — tools/build_manifest.py
+  manifest.csv / .json     stimulus catalog (106 stimuli) — tools/build_manifest.py
   movies/spacetop/         lab fMRI stimulus clips (49)        [internal]
   movies/open/             CC-BY Blender films (3) + SOURCES.md
   lexicons/                optional psycholinguistic norm CSVs (README.md)
@@ -58,15 +58,15 @@ tools/                     helper scripts (manifest, template, review assembly)
 
 ## Datasets
 
-- **Corpus manifest: 105 stimuli** (`data/manifest.csv`) — 49 `spacetop` audiovisual clips + 4 short
+- **Corpus manifest: 106 stimuli** (`data/manifest.csv`) — 49 `spacetop` audiovisual clips + 4 short
   films (3 CC-BY Blender open films + *Kung Fury*) + **29 Narratives spoken-story audio clips**
   (`data/stories/narratives/`, ~5.3 h; OpenNeuro ds002345, Nastase et al.) + 1 pure-text sample
-  story. 75 audiovisual, 29 audio-only, 1 text-only. Add media under `data/movies/<source>/`
+  story. 76 audiovisual, 29 audio-only, 1 text-only. Add media under `data/movies/<source>/`
   (movies/audio) or `data/stories/<source>/` (audio/text stories) and re-run
   `tools/build_manifest.py`. See [`ADDING_MOVIES.md`](ADDING_MOVIES.md); credentialed sets (HCP,
-  CamCAN) in [`EXTERNAL_STIMULI.md`](EXTERNAL_STIMULI.md). All 105 are annotated; corpus-wide
+  CamCAN) in [`EXTERNAL_STIMULI.md`](EXTERNAL_STIMULI.md). All 106 are annotated; corpus-wide
   analysis focuses on the audio/language channels shared across modalities, with visual/social/
-  affective structure on the 75-stimulus audiovisual subset (see [`REVIEW_PAPER.md`](REVIEW_PAPER.md) §5–6).
+  affective structure on the 76-stimulus audiovisual subset (see [`REVIEW_PAPER.md`](REVIEW_PAPER.md) §5–6).
 - **Lexicons (optional):** drop `data/lexicons/<field>.csv` (valence, arousal,
   dominance, concreteness, aoa) to light up those per-word channels; absent → NaN.
 

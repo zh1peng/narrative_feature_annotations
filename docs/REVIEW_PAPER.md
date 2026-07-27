@@ -173,15 +173,15 @@ into structs and timetables.
 
 ## 5. Corpus
 
-The analyzed corpus comprises **105 stimuli totaling ~588.9 minutes (~7.8 hours)** across
+The analyzed corpus comprises **106 stimuli totaling ~596.8 minutes (~7.8 hours)** across
 three modalities: 49 short **audiovisual** clips from a naturalistic-fMRI stimulus set, 4
 short films (3 Creative-Commons Blender open films — Big Buck Bunny, Sintel, Tears of Steel —
 and *Kung Fury*), **29 spoken-story audio** stimuli (~5.3 h) from the openly-released
 *Narratives* collection (Nastase et al., 2021; OpenNeuro ds002345), and 1 pure-text sample
-story — i.e. **75 audiovisual, 29 audio-only, and 1 text-only** stimuli. Every stimulus was
+story — i.e. **76 audiovisual, 29 audio-only, and 1 text-only** stimuli. Every stimulus was
 annotated under the same constant 103-channel template; classes that do not apply to a modality
 (e.g. visual features for an audio story) are present as `applicable=false` null skeletons.
-Stacked, the corpus yields **35,331 one-second timepoints**, demonstrating that stimuli of very
+Stacked, the corpus yields **35,809 one-second timepoints**, demonstrating that stimuli of very
 different modalities share one common analysis format.
 
 Because the corpus is modality-mixed and now dominated (in timepoints) by audio stories, the
@@ -189,7 +189,7 @@ channels populated *across all stimuli* are the audio, speech, and language feat
 visual/social/situational channels are — correctly — undefined for the audio and text stimuli.
 Corpus-wide analysis of the shared scalar channels therefore reflects this audio/language core
 (**26 channels** survive a ≤40%-missing filter), while modality-specific structure is analyzed
-on the **75-stimulus audiovisual subset** (below; 51 channels). Adding the spoken stories also
+on the **76-stimulus audiovisual subset** (below; 51 channels). Adding the spoken stories also
 transformed the corpus from dialogue-light to language-rich: word-level surprisal is defined in
 **91%** of story timepoints, versus sparse coverage in the audiovisual clips.
 

@@ -40,7 +40,7 @@ a channel **correlation network** (nodes colored by feature class, edge `|r|≥t
 and a **feature-class network** (edge = mean `|r|` between classes). Returns `R`,
 cluster `order`, PCA `coeff/score/explained`, and `classR`. NaN-aware z-scoring before
 PCA. NaN-aware. On the 83-stimulus modality-mixed corpus, 12 PCs reach 80% over the 26
-audio/language channels shared across modalities; on the 75-stimulus audiovisual subset,
+audio/language channels shared across modalities; on the 76-stimulus audiovisual subset,
 18 PCs reach 80%, with modest class couplings — strongest affect↔social (mean |r| 0.15), then
 visual↔social and audio↔social (0.11) — roughly stable across content. (The depicted-affect,
 social, and situational scalars come from the VLM reasoning pass, now run across the whole

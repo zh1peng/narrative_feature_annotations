@@ -1,19 +1,20 @@
 {
-  "n_stimuli": 105,
-  "total_minutes": 588.9,
-  "n_timepoints": 35331,
+  "n_stimuli": 106,
+  "total_minutes": 596.8,
+  "n_timepoints": 35809,
   "n_channels_total": 76,
   "by_source": {
     "narratives": 29,
     "hcp": 4,
     "open": 3,
+    "camcan": 1,
     "kungfury": 1,
     "samples": 1,
     "imensa": 18,
     "spacetop": 49
   },
   "by_modality": {
-    "audiovisual": 75,
+    "audiovisual": 76,
     "audio_only": 29,
     "text_only": 1
   },
@@ -25,10 +26,10 @@
   },
   "av_subset": {
     "n_channels_analyzed": 51,
-    "pcs_to_80": 18,
+    "pcs_to_80": 19,
     "pcs_to_90": 26,
-    "pc1_5_pct": 44.3,
-    "n_stimuli": 75
+    "pc1_5_pct": 44,
+    "n_stimuli": 76
   },
   "class_visual_social": 0.1,
   "class_audio_social": 0.09,
@@ -38,11 +39,11 @@
   "class_affect_situation": 0.04,
   "class_affect_audio": 0.05,
   "design_greedy": 13.9,
-  "design_random": 3,
+  "design_random": 2.5,
   "design_k": 20,
   "design_n_source_stimuli": 14,
   "contingency": {
-    "n_speech_rich": 37,
+    "n_speech_rich": 38,
     "n_speech_sparse": 38,
     "visual_social_rich": 0.11,
     "visual_social_sparse": 0.1,
