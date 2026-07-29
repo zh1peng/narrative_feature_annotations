@@ -1,5 +1,18 @@
 [
  {
+  "id": "koyaanisqatsi_aomic",
+  "path": "data/movies/AOMIC-ID1000/koyaanisqatsi_aomic.mp4",
+  "source": "AOMIC-ID1000",
+  "modality": "audiovisual",
+  "duration_sec": 660.0,
+  "fps": 25.0,
+  "width": 720,
+  "height": 576,
+  "has_video": true,
+  "has_audio": true,
+  "rights": "AOMIC ID1000 (OpenNeuro ds003097); film is third-party IP"
+ },
+ {
   "id": "bangbangyouredead_v2corrected",
   "path": "data/movies/camcan/bangbangyouredead_v2corrected.mov",
   "source": "camcan",

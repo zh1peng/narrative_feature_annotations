@@ -24,6 +24,7 @@ RIGHTS = {"open": "CC-BY (Blender open movies)", "spacetop": "lab-internal",
           "stories": "lab-internal", "narratives": "OpenNeuro ds002345 (CC0)",
           "hcp": "HCP (credentialed; not redistributable)", "imensa": "lab-internal",
           "camcan": "Cam-CAN (credentialed; not redistributable)",
+          "AOMIC-ID1000": "AOMIC ID1000 (OpenNeuro ds003097); film is third-party IP",
           "kungfury": "third-party (research use)"}
 
 # Path fragments to skip. For HCP we annotate only the Pre_20140821_version clips

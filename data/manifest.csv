@@ -1,4 +1,5 @@
 id,path,source,modality,duration_sec,fps,width,height,has_video,has_audio,rights
+koyaanisqatsi_aomic,data/movies/AOMIC-ID1000/koyaanisqatsi_aomic.mp4,AOMIC-ID1000,audiovisual,660.0,25.0,720,576,True,True,AOMIC ID1000 (OpenNeuro ds003097); film is third-party IP
 bangbangyouredead_v2corrected,data/movies/camcan/bangbangyouredead_v2corrected.mov,camcan,audiovisual,478.84,25.0,768,576,True,True,Cam-CAN (credentialed; not redistributable)
 7T_MOVIE1_CC1,data/movies/hcp/Pre_20140821_version/7T_MOVIE1_CC1.mp4,hcp,audiovisual,921.0,24.0,1024,720,True,True,HCP (credentialed; not redistributable)
 7T_MOVIE2_HO1,data/movies/hcp/Pre_20140821_version/7T_MOVIE2_HO1.mp4,hcp,audiovisual,918.04,24.0,1024,720,True,True,HCP (credentialed; not redistributable)
