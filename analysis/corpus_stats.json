@@ -1,20 +1,21 @@
 {
-  "n_stimuli": 106,
-  "total_minutes": 596.8,
-  "n_timepoints": 35809,
+  "n_stimuli": 107,
+  "total_minutes": 607.8,
+  "n_timepoints": 36469,
   "n_channels_total": 76,
   "by_source": {
     "narratives": 29,
     "hcp": 4,
     "open": 3,
     "camcan": 1,
+    "AOMIC_ID1000": 1,
     "kungfury": 1,
     "samples": 1,
     "imensa": 18,
     "spacetop": 49
   },
   "by_modality": {
-    "audiovisual": 76,
+    "audiovisual": 77,
     "audio_only": 29,
     "text_only": 1
   },
@@ -22,32 +23,32 @@
     "n_channels_analyzed": 30,
     "pcs_to_80": 13,
     "pcs_to_90": 17,
-    "pc1_5_pct": 47
+    "pc1_5_pct": 47.1
   },
   "av_subset": {
     "n_channels_analyzed": 51,
     "pcs_to_80": 19,
     "pcs_to_90": 26,
     "pc1_5_pct": 44,
-    "n_stimuli": 76
+    "n_stimuli": 77
   },
   "class_visual_social": 0.1,
   "class_audio_social": 0.09,
   "class_audio_visual": 0.08,
-  "class_affect_social": 0.15,
+  "class_affect_social": 0.14,
   "class_affect_visual": 0.06,
   "class_affect_situation": 0.04,
   "class_affect_audio": 0.05,
   "design_greedy": 13.9,
-  "design_random": 2.5,
+  "design_random": 2.4,
   "design_k": 20,
-  "design_n_source_stimuli": 14,
+  "design_n_source_stimuli": 15,
   "contingency": {
     "n_speech_rich": 38,
-    "n_speech_sparse": 38,
+    "n_speech_sparse": 39,
     "visual_social_rich": 0.11,
     "visual_social_sparse": 0.1,
     "audio_social_rich": 0.1,
-    "audio_social_sparse": 0.06
+    "audio_social_sparse": 0.05
   }
 }
