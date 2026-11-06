@@ -93,14 +93,14 @@ def corpus_facts() -> dict:
          "audiovisual": 53, "audio_only": 29, "text_only": 1}
     stats = ROOT / "analysis" / "corpus_stats.json"
     if stats.exists():
-        s = json.loads(stats.read_text())
+        s = json.loads(stats.read_text(encoding="utf-8"))
         f["n_stimuli"] = s.get("n_stimuli", f["n_stimuli"])
         f["total_minutes"] = s.get("total_minutes", f["total_minutes"])
         for k in ("audiovisual", "audio_only", "text_only"):
             f[k] = s.get("by_modality", {}).get(k, f[k])
     tmpl = ROOT / "schema" / "channel_template.json"
     if tmpl.exists():
-        f["n_channels"] = json.loads(tmpl.read_text()).get("n_channels", f["n_channels"])
+        f["n_channels"] = json.loads(tmpl.read_text(encoding="utf-8")).get("n_channels", f["n_channels"])
     return f
 
 
@@ -154,14 +154,14 @@ and the corpus stacks into rectangular matrices for analysis.
 > The source repository holds the pipeline (`src/nfe/`), the MATLAB reader (`matlab/`),
 > and the annotated corpus derivatives. This documentation book is generated from the
 > canonical Markdown in `docs/` by `tools/build_book.py`.
-""")
+""", encoding="utf-8")
 
 
 def write_browser() -> None:
     readme = ROOT / "analysis" / "web" / "README.md"
     extra = ""
     if readme.exists():
-        body = readme.read_text().split("\n", 1)[1].strip()   # drop the H1
+        body = readme.read_text(encoding="utf-8").split("\n", 1)[1].strip()   # drop the H1
         extra = "\n## Notes from the app README\n\n" + body + "\n"
     (SRC / "browser.md").write_text(f"""# Interactive segment browser
 
@@ -185,7 +185,7 @@ beach-sunset clips.
 > are not hosted. To use it fully, serve the repository root with `python3 tools/serve.py`
 > (a small Range-capable server, so video **seeking** works — the built-in
 > `python -m http.server` cannot seek) and open `analysis/web/index.html`.
-{extra}""")
+{extra}""", encoding="utf-8")
 
 
 def write_summary() -> None:
@@ -199,7 +199,7 @@ def write_summary() -> None:
             lines.append(f"- {title}")
         else:
             lines.append(f"{'  ' * indent}- [{title}]({path})")
-    (SRC / "SUMMARY.md").write_text("\n".join(lines) + "\n")
+    (SRC / "SUMMARY.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def main() -> None:
@@ -224,17 +224,19 @@ def main() -> None:
             op.rename(np_)
     # Rewrite inbound links to the renamed files across every mirrored markdown page.
     for md in SRC.rglob("*.md"):
-        text = md.read_text()
+        text = md.read_text(encoding="utf-8")
         new_text = text
         for a, b in LINK_REWRITE.items():
             new_text = new_text.replace(a, b)
         if new_text != text:
-            md.write_text(new_text)
+            md.write_text(new_text, encoding="utf-8")
 
     facts = corpus_facts()
     write_introduction(facts)
     write_browser()
     write_summary()
+    # Apply the Chinese edition after assembling the upstream book and its shared assets.
+    shutil.copytree(ROOT / "book" / "zh-CN", SRC, dirs_exist_ok=True)
     n_md = sum(1 for _ in SRC.rglob("*.md"))
     print(f"wrote {SRC} ({n_md} markdown pages; corpus: {facts['n_stimuli']} stimuli, "
           f"{facts['n_channels']} channels)")

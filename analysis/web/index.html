@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Narrative Feature Segment Search</title>
+<title>按叙事特征查找片段</title>
 <style>
   :root { --bd:#d9dee3; --mut:#667; --accent:#2563eb; }
   * { box-sizing:border-box; }
@@ -54,16 +54,15 @@
 </head>
 <body>
 <header>
-  <h1>Narrative Feature Segment Search</h1>
-  <p>Rank movie/story segments by any combination of computational annotations. Pick features
-     (toggle <b>High</b>/<b>Low</b>), then play the matching moment and see the feature time series in context.</p>
+  <h1>按叙事特征查找片段</h1>
+  <p>勾选特征并指定想找的<b>高值</b>或<b>低值</b>，即可查看匹配的影片或故事片段。播放时可对照整段材料中的特征变化。</p>
 </header>
 
 <div class="wrap">
   <div id="controls" class="panel">
-    <input type="search" id="chfilter" placeholder="filter features…">
+    <input type="search" id="chfilter" placeholder="筛选特征…">
     <div class="row2">
-      <select id="src"><option value="">all sources</option></select>
+      <select id="src"><option value="">全部来源</option></select>
       <select id="topn">
         <option>25</option><option selected>50</option><option>100</option><option>200</option>
       </select>
@@ -71,15 +70,15 @@
     <div id="chlist"></div>
   </div>
 
-  <div id="results" class="panel"><div class="muted">Loading index…</div></div>
+  <div id="results" class="panel"><div class="muted">正在读取索引…</div></div>
 
   <div id="playercol">
     <div id="player" class="panel">
       <video id="vid" controls></video>
-      <div class="now" id="now">Select a segment to play.</div>
+      <div class="now" id="now">选择片段开始播放。</div>
       <div class="pbtns">
-        <button class="play" id="playSeg" disabled>▶ Play segment</button>
-        <button class="play" id="playClip" disabled>▶ Play entire clip</button>
+        <button class="play" id="playSeg" disabled>▶ 播放片段</button>
+        <button class="play" id="playClip" disabled>▶ 播放全片</button>
       </div>
       <div id="tl"></div>
     </div>
@@ -115,12 +114,12 @@ function buildChannels(){
   DATA.channels.forEach(c => (byClass[c.class] ??= []).push(c));
   host.innerHTML = "";
   Object.keys(byClass).sort().forEach(cls => {
-    const h = document.createElement("div"); h.className="cls"; h.textContent=cls; host.appendChild(h);
+    const h = document.createElement("div"); h.className="cls"; h.textContent=({visual:"视觉",audio:"音频",language:"语言",social:"社会互动",situation:"情境",affect:"情感"})[cls] || cls; host.appendChild(h);
     byClass[cls].forEach(c => {
       const row = document.createElement("div"); row.className="ch"; row.dataset.name=c.name;
       const cb = document.createElement("input"); cb.type="checkbox";
       const lab = document.createElement("label"); lab.textContent = shortName(c.name); lab.title=c.name;
-      const dir = document.createElement("span"); dir.className="dir high"; dir.textContent="High";
+      const dir = document.createElement("span"); dir.className="dir high"; dir.textContent="高";
       cb.onchange = () => {
         if(cb.checked) SEL.set(c.name, dir.classList.contains("high") ? 1 : -1);
         else SEL.delete(c.name);
@@ -129,7 +128,7 @@ function buildChannels(){
       dir.onclick = () => {
         const hi = dir.classList.contains("high");
         dir.classList.toggle("high",!hi); dir.classList.toggle("low",hi);
-        dir.textContent = hi ? "Low" : "High";
+        dir.textContent = hi ? "低" : "高";
         if(cb.checked){ SEL.set(c.name, hi ? -1 : 1); refresh(); }
       };
       lab.onclick = () => { cb.checked=!cb.checked; cb.onchange(); };
@@ -159,7 +158,7 @@ function search(){
   const srcF = document.getElementById("src").value;
   const topN = +document.getElementById("topn").value;
   const out = document.getElementById("results");
-  if(SEL.size===0){ out.innerHTML = '<div class="muted">Pick one or more features on the left to rank segments.</div>'; return; }
+  if(SEL.size===0){ out.innerHTML = '<div class="muted">请在左侧勾选至少一项特征，查看片段排名。</div>'; return; }
   let segs = DATA.segments.filter(s => !srcF || s.src===srcF);
   segs = segs.map(s => ({s, ...score(s)})).filter(x => isFinite(x.score))
              .sort((a,b) => b.score-a.score).slice(0, topN);
@@ -175,7 +174,7 @@ function search(){
        <div class="chips"></div>
        <div class="btns"></div>`;
     row.querySelector(".sid").textContent = s.stim;
-    const cov = x.k < SEL.size ? ` · ${x.k}/${SEL.size} feat` : "";
+    const cov = x.k < SEL.size ? ` · ${x.k}/${SEL.size} 项特征` : "";
     row.querySelector(".time").textContent = `${s.t0.toFixed(0)}–${s.t1.toFixed(0)}s${cov}`;
     const chipHost = row.querySelector(".chips");
     for(const nm of SEL.keys()){
@@ -189,17 +188,17 @@ function search(){
     const playable = s.media && s.modality !== "text-only";
     const audio = s.modality === "audio-only";
     const bSeg = document.createElement("button"); bSeg.className="play";
-    bSeg.textContent = audio ? "♪ Segment" : "▶ Segment";
+    bSeg.textContent = audio ? "♪ 片段" : "▶ 片段";
     const bClip = document.createElement("button"); bClip.className="play";
-    bClip.textContent = audio ? "♪ Clip" : "▶ Clip";
+    bClip.textContent = audio ? "♪ 全片" : "▶ 全片";
     bSeg.disabled = bClip.disabled = !playable;
-    if(!playable){ bSeg.title = bClip.title = "text-only stimulus (no media)"; }
+    if(!playable){ bSeg.title = bClip.title = "纯文本材料，无音视频文件"; }
     bSeg.onclick  = () => { loadSegment(s); playSegment(); };
     bClip.onclick = () => { loadSegment(s); playClip(); };
     btns.append(bSeg, bClip);
     out.appendChild(row);
   });
-  if(!segs.length) out.innerHTML = '<div class="muted">No matching segments.</div>';
+  if(!segs.length) out.innerHTML = '<div class="muted">没有匹配的片段。</div>';
 }
 
 /* ---------------- player ---------------- */
@@ -214,7 +213,7 @@ function wirePlayer(){
   v.addEventListener("loadedmetadata", () => { if(lastSeg) drawTimeline(lastSeg.stim); });
   v.onerror = () => {
     if(!lastSeg) return;
-    document.getElementById("now").textContent = `Cannot play ${lastSeg.stim} (unsupported/missing media)`;
+    document.getElementById("now").textContent = `无法播放 ${lastSeg.stim} （媒体文件缺失或格式不受支持）`;
     delete v.dataset.media;                       // allow retry, don't dead-end
   };
 }
@@ -245,7 +244,7 @@ function playSegment(){
   const s = lastSeg;
   curRange = { from:s.t0, to:s.t1 };
   document.getElementById("now").textContent =
-    `${s.stim} — segment ${s.t0.toFixed(0)}–${s.t1.toFixed(0)}s` + (s.modality==="audio-only"?"  (audio)":"");
+    `${s.stim} — 片段 ${s.t0.toFixed(0)}–${s.t1.toFixed(0)}s` + (s.modality==="audio-only"?"（音频）":"");
   seekAndPlay(s.t0);
 }
 
@@ -254,7 +253,7 @@ function playClip(){
   const s = lastSeg;
   curRange = { from:0, to:Infinity };
   document.getElementById("now").textContent =
-    `${s.stim} — full clip` + (s.modality==="audio-only"?"  (audio)":"");
+    `${s.stim} — 全片` + (s.modality==="audio-only"?"（音频）":"");
   seekAndPlay(0);
 }
 
@@ -288,7 +287,7 @@ function drawTimeline(stim){
   const feats = [...SEL.keys()];
   const segsFor = DATA.segments.filter(x => x.stim===stim).sort((a,b)=>a.t0-b.t0);
   if(!feats.length || !segsFor.length){
-    host.innerHTML = '<div class="cap">Select one or more features to plot their time course over the clip.</div>';
+    host.innerHTML = '<div class="cap">请勾选特征，查看它们在全片中的变化。</div>';
     TL = null; return;
   }
   const v = vid();
@@ -302,7 +301,7 @@ function drawTimeline(stim){
     return { name:nm, color:PALETTE[fi%PALETTE.length], pts };
   }).filter(s => s.pts.length);
 
-  if(!series.length){ host.innerHTML = '<div class="cap">Selected feature(s) not measured for this clip.</div>'; TL=null; return; }
+  if(!series.length){ host.innerHTML = '<div class="cap">本片没有所选特征的测量值。</div>'; TL=null; return; }
 
   let zmin=Infinity, zmax=-Infinity;
   series.forEach(s => s.pts.forEach(p => { zmin=Math.min(zmin,p.z); zmax=Math.max(zmax,p.z); }));
@@ -334,7 +333,7 @@ function drawTimeline(stim){
   svg += `</svg>`;
 
   host.innerHTML = `<div class="lg">${lg}</div>${svg}
-     <div class="cap">Feature values (z-scored across the corpus) over the full clip; the marker tracks playback. <b>Click the plot to jump the video to that time.</b></div>`;
+     <div class="cap">图中显示全片的特征值（已按语料库计算 z 分数），标记线随播放进度移动。<b>点击曲线图可以跳到对应时刻。</b></div>`;
 
   TL = { stim, tMax, series, X, Y,
          svg: host.querySelector("svg"),
