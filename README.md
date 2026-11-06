@@ -1,6 +1,6 @@
 # Narrative Feature Extraction
 
-**简体中文版** · [导读](book/zh-CN/introduction.md) · [全书目录](book/zh-CN/SUMMARY.md)。本地构建可运行 `python tools/build_book.py` 和 `mdbook build book`，再打开 `book/book/index.html`。
+**[在线阅读简体中文版](https://zh1peng.github.io/narrative_feature_annotations/)** · [导读](book/zh-CN/introduction.md) · [全书目录](book/zh-CN/SUMMARY.md)。本地构建可运行 `python tools/build_book.py` 和 `mdbook build book`，再打开 `book/book/index.html`。
 
 ### 📖 [**Browse the documentation book →**](https://canlab.github.io/narrative_feature_annotations/)
 
