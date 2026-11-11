@@ -169,7 +169,7 @@
 - **显著性/深度：** Q-Align（美观+质量）、ResMem（记忆性）、Apple Depth Pro（公制深度）、DeepGaze IIE（静态注视）
 - **人脸：** Py-Feat（经过验证的 AU 检测器集）、L2CS-Net（一流的 360° 凝视）、MediaPipe（CPU 冗余层）、InsightFace 年龄/性别
 - **音频：** Essentia + madmom/击败这个！ （粗糙度/节拍/MIR + 校准情绪/流派/效价唤醒）、CREPE（稳健的 F0）、mosqito（基于标准的心理声学粗糙度/响度/锐度）、MERT 音乐情感回归量
-- **语音：**情感2vec+（分类SER），NeMo Parakeet/Canary（多语言ASR交叉检查）
+- **语音**：情感2vec+（分类SER），NeMo Parakeet/Canary（多语言ASR交叉检查）
 - **语言：** Stanza（真正的 UD 方案）、GLiNER（自定义实体类型）、LIWC-22（经过验证的代词/功能词方案）、DMRST（可复制的 RST 话语标签）、监督 TRIPOD 转折点、textstat（廉价可读性）、对话行为分类器
 - **语义：** API 嵌入（OpenAI/Voyage/Gemini）（如果需要跻身排行榜）
 - **情况：** BrainIAK HMM（软事件后验/重新激活）、MovieCLIP（电影分类设置）、Llama-3-70B/GPT-4 转录事件分割

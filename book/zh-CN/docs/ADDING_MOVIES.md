@@ -14,15 +14,15 @@ data/movies/<source>/...        e.g. data/movies/myset/clip01.mp4     (movies / 
 data/stories/<source>/...       e.g. data/stories/myset/story01.txt   (stories)
 ```
 
-- **电影：**任何视频容器（`.mp4 .mkv .mov .avi .webm .m4v`）。自动检测模态（仅视听/视频）。
-- **音频故事：**音频文件 (`.wav .mp3 .m4a .flac .aac .ogg`) — 检测为 `audio-only`；视觉通道记为`NaN`（不适用）。
+- **电影**：任何视频容器（`.mp4 .mkv .mov .avi .webm .m4v`）。自动检测模态（仅视听/视频）。
+- **音频故事**：音频文件 (`.wav .mp3 .m4a .flac .aac .ogg`) — 检测为 `audio-only`；视觉通道记为`NaN`（不适用）。
 - **纯文本故事：** 纯文本文件 (`.txt .text .story`) — 检测为 `text-only`。文本被放置在估计的**按阅读速度估计的时间轴**（约 3 个词/秒）上，因此它共享 1 Hz 网格；语言、文本情感、惊喜和事件通行证运行，视觉/音频通道为 `NaN`。 （Markdown `.md` 被视为文档，而不是故事。）将故事放在 `data/stories/<source>/` 下（或 `data/movies/` — 两者都会被扫描）。
 - 每个**来源**使用一个子文件夹（保持出处/权利整洁）。如果材料有许可条款，请在该子文件夹中添加 `SOURCES.md`（请参阅 `data/movies/open/SOURCES.md`）。
 - **经过认证的神经影像刺激**（HCP 7T 电影、CamCAN Hitchcock 剪辑）：这些需要数据访问请求 - 请参阅[`EXTERNAL_STIMULI.md`](EXTERNAL_STIMULI.md)。占位符文件夹 `data/movies/hcp/` 和 `data/movies/camcan/` 已为它们准备好。
 
 ### 2. 刷新——两个选项
 
-**选项A（最简单）：**告诉Claude *“我在`data/movies/<source>/`下添加了媒体，刷新数据集和文档”*。 Claude 运行下面的操作手册并更新所有内容。
+**选项A（最简单）**：告诉Claude *“我在`data/movies/<source>/`下添加了媒体，刷新数据集和文档”*。 Claude 运行下面的操作手册并更新所有内容。
 
 **选项B（自己做）：**
 ```bash
@@ -41,8 +41,8 @@ matlab -batch "addpath matlab; refreshAnalysis('annotations/corpus')"
 - 在查看器中抽查新刺激：`annotationMovieViewer(movie, annDir)`。
 
 ### 标注
-- **可恢复：**现有标注被跳过；仅处理新的刺激。长片需要一段时间（尤其是`--reason`）；如果需要，运行过夜。
-- **模板稳定：**添加媒体**不会**更改 103 通道模板。仅当您更改*提取器集*时才重建它 (`tools/build_channel_template.py`) — 然后用 `--no-skip` 重新标注所有内容。
+- **可恢复**：现有标注被跳过；仅处理新的刺激。长片需要一段时间（尤其是`--reason`）；如果需要，运行过夜。
+- **模板稳定**：添加媒体**不会**更改 103 通道模板。仅当您更改*提取器集*时才重建它 (`tools/build_channel_template.py`) — 然后用 `--no-skip` 重新标注所有内容。
 - 硬件/运行时指导：`docs/design/PHASE3_CORPUS.md`、`design/DEPLOYMENT_FEASIBILITY.md`。
 
 ---
@@ -53,7 +53,7 @@ matlab -batch "addpath matlab; refreshAnalysis('annotations/corpus')"
 
 1. **标注 + 索引** — `bash tools/refresh_corpus.sh`（根据要求转发 `--reason` / `--source` / `--no-skip`）。可恢复。对于许多/长时间的刺激，在后台运行它并监视`annotations/corpus/corpus_index.csv`（计数`*/*.h5`，观察`status=error`）。这会重建 `data/manifest.csv` 和 `analysis/web/segments.json`。
 
-2. **分析 + 统计** — 在 MATLAB 中（通过 MCP）：`addpath matlab; cd <root>; refreshAnalysis("annotations/corpus")`。重新生成`analysis/figures/*.png`并写入**`analysis/corpus_stats.json`**。
+2. **分析 + 统计** — 在 MATLAB 中（通过 MCP）：`addpath matlab; cd <root>; refreshAnalysis("annotations/corpus")`。重新生成`analysis/figures/*.png`并写入 **`analysis/corpus_stats.json`**。
 
 3. **从`analysis/corpus_stats.json`（键→位置）更新语料库相关文档**。 `refreshAnalysis`在`full.*`下导出完整语料库统计数据，在`av_subset.*`下导出视听子集统计数据（论文的结构图是AV子集），并为任何退出分析的类导出NaN——这里的NaN意味着“没有足够的数据”，而不是“将文档更新为NaN”。
 |统计键 |更新于 | |---|---| | `n_stimuli`、`total_minutes`、`by_source`、`by_modality` | `README.md`（第 3 阶段行）、`docs/CONTENTS.md`（数据集 + 文件夹映射计数）、`docs/REVIEW_PAPER.md` §5、`docs/design/PHASE3_CORPUS.md` | | `n_timepoints`、`full.n_channels_analyzed`、`av_subset.n_channels_analyzed` | `REVIEW_PAPER.md` §5/§6 | | `full.pcs_to_80`, `av_subset.pcs_to_80` (+ `pc1_5_pct`) | `REVIEW_PAPER.md` §6.2，`PHASE4_ANALYSIS.md` | | `class_visual_social`、`class_audio_social`、`class_audio_visual` | `REVIEW_PAPER.md` §6.3，`PHASE4_ANALYSIS.md` | | `contingency.visual_social_*`、`contingency.audio_social_*` | `REVIEW_PAPER.md` §6.4 | | `design_greedy`、`design_random`、`design_k`、`design_n_source_stimuli` | `REVIEW_PAPER.md`§7，`PHASE4_ANALYSIS.md`| |可搜索段/通道数 |从 `build_search_index.py` 标准输出 → `PHASE4_ANALYSIS.md` |

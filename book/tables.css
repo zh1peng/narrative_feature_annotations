@@ -1,0 +1,73 @@
+@media screen {
+    .content main:has(.comparison-table) {
+        max-width: 1380px;
+    }
+
+    .content main:has(.comparison-table) > :not(.table-wrapper) {
+        max-width: var(--content-max-width);
+        margin-inline: auto;
+    }
+
+    .content table :is(th, td) {
+        padding: .55em .75em;
+        text-align: start;
+        vertical-align: top;
+        line-height: 1.55;
+    }
+
+    .comparison-table {
+        width: 100%;
+        min-width: 44em;
+    }
+
+    /* In the tool catalogues, the two descriptions need most of the row. */
+    .comparison-table:has(th:nth-child(8)) :is(th, td):is(:nth-child(2), :nth-child(3)) {
+        min-width: 16em;
+    }
+
+    .comparison-table:has(th:nth-child(8)) :is(th, td):first-child {
+        min-width: 8em;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .comparison-table {
+        display: block;
+        min-width: 0;
+    }
+
+    .comparison-table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+    }
+
+    .comparison-table tbody {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .comparison-table tbody tr {
+        display: block;
+        padding: .65em .85em;
+        border: 1px solid var(--table-border-color);
+    }
+
+    .content .comparison-table tbody tr td:nth-child(n) {
+        display: block;
+        min-width: 0;
+        padding: .35em 0;
+        border: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .comparison-table td::before {
+        content: attr(data-label);
+        content: attr(data-label) / "";
+        display: block;
+        font-weight: bold;
+        font-size: .85em;
+    }
+}

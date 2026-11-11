@@ -10,6 +10,8 @@ language = "zh-CN"
 src = "src"
 
 [output.html]
+additional-css = ["tables.css"]
+additional-js = ["tables.js"]
 default-theme = "light"
 preferred-dark-theme = "navy"
 smart-punctuation = true

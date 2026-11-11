@@ -4,7 +4,7 @@
 
 ## 语料库和清单
 
-`tools/build_manifest.py`扫描`data/movies/**`和`data/stories/**`并写入**`data/manifest.csv`**（+`.json`）：`id, path, source, modality, duration_sec, fps, width, height, has_video, has_audio, rights`。每当添加媒体时都进行重建。
+`tools/build_manifest.py`扫描`data/movies/**`和`data/stories/**`并写入 **`data/manifest.csv`**（+`.json`）：`id, path, source, modality, duration_sec, fps, width, height, has_video, has_audio, rights`。每当添加媒体时都进行重建。
 
 当前语料库：**107 个刺激 / ~607.8 分钟（~7.8 小时）** — 49 个实验室 `spacetop` 剪辑 + 4 部短片（3 个 CC-BY Blender 开放电影 + *Kung Fury*）+ **29 Narratives 有声故事音频片段**（`data/stories/narratives/`，~5.3 小时）+ 1 个纯文本示例故事（77 个视听、 29 个纯音频，1 个纯文本）。要增长它：将文件放在`data/movies/<source>/`（影片或音频）或`data/stories/<source>/`（音频/文本故事）下，然后重新运行清单（请参阅[`../ADDING_MOVIES.md`](../ADDING_MOVIES.md)；[`../EXTERNAL_STIMULI.md`](../EXTERNAL_STIMULI.md)中的凭证集）。
 
@@ -22,8 +22,8 @@ PYTHONPATH=src .venv/bin/python -m nfe.batch \
 ```
 
 - **固定维度：** `--template schema/channel_template.json` → 每个文件都有相同的 103 通道层次结构（未运行/不适用的通道为 `applicable=false` NaN），因此第 4 阶段将它们堆叠成矩形矩阵。
-- **可恢复：**跳过 `<id>.h5` 已存在的刺激（`--no-skip` 强制）。
-- **崩溃安全：**在处理完每份材料后重写`annotations/corpus/corpus_index.csv`（id，状态，n_measured / n_skeleton，秒，错误）。
+- **可恢复**：跳过 `<id>.h5` 已存在的刺激（`--no-skip` 强制）。
+- **崩溃安全**：在处理完每份材料后重写`annotations/corpus/corpus_index.csv`（id，状态，n_measured / n_skeleton，秒，错误）。
 - **隔离：** 一个刺激错误不会停止批次。
 - 过滤器：`--source`、`--ids`、`--max-dur`、`--limit`。通过：`--vision --audio-hl --reason --events`。 `--fps`（批量默认2）。
 
